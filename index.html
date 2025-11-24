@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HayalMakinesi.com</title>
+    <meta name="description" content="Deployed from Builder.io">
+    
+    <!-- Builder.io CSS -->
+        
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+    </style>
+</head>
+<body>
+        <div id="builder-content"></div>
+    
+    <script>
+        const builderContent = {"createdDate":1763029497062,"id":"794e3d8007e44d7aac094fc991554f09","name":"HayalMakinesi.com","modelId":"c11f0e5572e94bf18db7b74c812177e4","published":"published","meta":{"hasAutosaves":false,"kind":"page","lastPreviewUrl":"https:\/\/www.builder.my\/sitetasarimi?model=page\u0026builder.space=de8608c357ca4b5391c02a2d7dcc7015\u0026builder.user.permissions=read%2Ccreate%2Cpublish%2CeditCode%2CeditDesigns%2Cadmin%2CeditLayouts%2CeditLayers%2CeditContentPriority%2CeditFolders%2CeditProjects%2CmodifyMcpServers%2CmodifyWorkflowIntegrations%2CmodifyProjectSettings%2CconnectCodeRepository%2CcreateProjects%2CindexDesignSystems\u0026builder.user.role.name=Admin\u0026builder.user.role.id=admin\u0026builder.cachebust=true\u0026builder.preview=page\u0026builder.noCache=true\u0026builder.allowTextEdit=true\u0026__builder_editing__=true\u0026builder.overrides.page=794e3d8007e44d7aac094fc991554f09\u0026builder.overrides.794e3d8007e44d7aac094fc991554f09=794e3d8007e44d7aac094fc991554f09\u0026builder.options.locale=Default"},"query":[{"@type":"@builder.io\/core:Query","property":"urlPath","operator":"is","value":"\/sitetasarimi"}],"data":{"themeId":false,"title":"HayalMakinesi.com","blocks":[{"id":"builder-pixel-bmg8j46dvoe","@type":"@builder.io\/sdk:Element","tagName":"img","properties":{"src":"https:\/\/cdn.builder.io\/api\/v1\/pixel?apiKey=de8608c357ca4b5391c02a2d7dcc7015","aria-hidden":"true","alt":"","role":"presentation","width":"0","height":"0"},"responsiveStyles":{"large":{"height":"0","width":"0","display":"block","opacity":"0","overflow":"hidden","pointerEvents":"none"}}}],"url":"\/sitetasarimi","state":{"deviceSize":"large","location":{"path":"","query":[]}}},"variations":[],"lastUpdated":1763982483892,"firstPublished":1763982483874,"testRatio":1,"screenshot":"https:\/\/cdn.builder.io\/api\/v1\/image\/assets%2Fde8608c357ca4b5391c02a2d7dcc7015%2F96c719fc712f41e18d6c6e5e1966a199","createdBy":"KQq8pOqEkTajhigX4jtssTeO2BI2","lastUpdatedBy":"KQq8pOqEkTajhigX4jtssTeO2BI2","folders":[],"rev":"3s66pfafm4b"};
+        
+        function renderBlocks(blocks) {
+            return blocks.map(block => {
+                if (!block) return '';
+                
+                // Image component
+                if (block.component && block.component.name === 'Image') {
+                    const imageUrl = block.component.options?.image || 
+                                   block.component.options?.src ||
+                                   block.properties?.src || '';
+                    const altText = block.component.options?.altText || 
+                                  block.properties?.alt || 'Image';
+                    
+                    let imgStyles = '';
+                    if (block.responsiveStyles && block.responsiveStyles.large) {
+                        const styleObj = block.responsiveStyles.large;
+                        imgStyles = Object.entries(styleObj)
+                            .map(([key, value]) => {
+                                const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+                                return `${cssKey}: ${value}`;
+                            })
+                            .join('; ');
+                    }
+                    
+                    if (imageUrl) {
+                        return `<img src="${imageUrl}" alt="${altText}" style="${imgStyles}; width: 100%; height: auto; display: block; object-fit: cover;" loading="lazy" />`;
+                    }
+                }
+                
+                // Properties.src check
+                if (block.properties && block.properties.src) {
+                    const imageUrl = block.properties.src;
+                    const altText = block.properties.alt || 'Image';
+                    
+                    let imgStyles = '';
+                    if (block.responsiveStyles && block.responsiveStyles.large) {
+                        const styleObj = block.responsiveStyles.large;
+                        imgStyles = Object.entries(styleObj)
+                            .map(([key, value]) => {
+                                const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+                                return `${cssKey}: ${value}`;
+                            })
+                            .join('; ');
+                    }
+                    
+                    return `<img src="${imageUrl}" alt="${altText}" style="${imgStyles}; width: 100%; height: auto; display: block; object-fit: cover;" loading="lazy" />`;
+                }
+                
+                // Text component
+                if (block.component && block.component.name === 'Text') {
+                    const text = block.component.options.text || '';
+                    let textStyles = '';
+                    if (block.responsiveStyles && block.responsiveStyles.large) {
+                        const styleObj = block.responsiveStyles.large;
+                        textStyles = Object.entries(styleObj)
+                            .map(([key, value]) => {
+                                const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+                                return `${cssKey}: ${value}`;
+                            })
+                            .join('; ');
+                    }
+                    return `<span style="${textStyles}">${text}</span>`;
+                }
+                
+                // Normal HTML element
+                const tag = block.tagName || 'div';
+                const id = block.id || '';
+                const className = block.class || '';
+                
+                let styles = '';
+                if (block.responsiveStyles && block.responsiveStyles.large) {
+                    const styleObj = block.responsiveStyles.large;
+                    styles = Object.entries(styleObj)
+                        .map(([key, value]) => {
+                            const cssKey = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+                            return `${cssKey}: ${value}`;
+                        })
+                        .join('; ');
+                }
+                
+                let content = '';
+                if (block.children && Array.isArray(block.children)) {
+                    content = renderBlocks(block.children);
+                }
+                
+                return `<${tag} ${id ? `id="${id}"` : ''} ${className ? `class="${className}"` : ''} ${styles ? `style="${styles}"` : ''}>${content}</${tag}>`;
+            }).join('');
+        }
+        
+        if (builderContent && builderContent.data && builderContent.data.blocks) {
+            const container = document.getElementById('builder-content');
+            const html = renderBlocks(builderContent.data.blocks);
+            container.innerHTML = html;
+        }
+    </script>
+    
+    <!-- Builder.io JS Code -->
+        </body>
+</html>
